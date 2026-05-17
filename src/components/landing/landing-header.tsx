@@ -10,9 +10,9 @@ export function LandingHeader() {
     <header className="border-b border-border/80 bg-background/70 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div>
-          <p className="text-lg font-semibold tracking-tight">
+          <div className="text-lg font-semibold tracking-tight">
             <QuizCompileLogo linkTo="/" />
-          </p>
+          </div>
           <p className="text-sm text-muted-foreground">
             Built for college quizzes, writing, and coding.
           </p>
