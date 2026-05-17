@@ -10,19 +10,29 @@ import {
 import { Input } from '@/components/ui/input'
 import { authClient } from '@/lib/auth-client'
 import { cn } from '@/lib/utils'
-import { useState } from 'react'
+import { Link } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
+
+interface LoginFormProps extends React.ComponentProps<'div'> {
+  initialView?: 'login' | 'signup'
+}
 
 export function LoginForm({
   className,
+  initialView = 'login',
   ...props
-}: React.ComponentProps<'div'>) {
-  const [view, setView] = useState<'login' | 'signup'>('login')
+}: LoginFormProps) {
+  const [view, setView] = useState<'login' | 'signup'>(initialView)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('') // Good practice for Better Auth signUp
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    setView(initialView)
+  }, [initialView])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -85,16 +95,16 @@ export function LoginForm({
               {view === 'login' ? (
                 <>
                   Don&apos;t have an account?{' '}
-                  <a href="#" onClick={() => setView('signup')}>
+                  <Link to="/auth" search={{ mode: 'signup' }} className="font-medium text-primary hover:underline">
                     Sign up
-                  </a>
+                  </Link>
                 </>
               ) : (
                 <>
                   Already have an account?{' '}
-                  <a href="#" onClick={() => setView('login')}>
+                  <Link to="/auth" search={{ mode: 'login' }} className="font-medium text-primary hover:underline">
                     Login
-                  </a>
+                  </Link>
                 </>
               )}
             </FieldDescription>
