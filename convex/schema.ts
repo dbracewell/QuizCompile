@@ -1,4 +1,3 @@
-import { authTables } from '@convex-dev/better-auth/plugins' // 👈 Import Better Auth tables
 import { defineSchema, defineTable } from 'convex/server'
 import { v } from 'convex/values'
 
@@ -12,5 +11,4 @@ export default defineSchema({
     text: v.string(),
     completed: v.boolean(),
   }),
-  ...authTables,
 })
