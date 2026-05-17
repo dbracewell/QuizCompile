@@ -1,0 +1,8 @@
+procs:
+  next:
+    shell: 'pnpm run dev'
+    autostart: true
+
+  convex:
+    shell: 'pnpm dlx convex dev'
+    autostart: true
